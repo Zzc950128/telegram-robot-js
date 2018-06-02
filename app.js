@@ -13,9 +13,14 @@ class PingController extends TelegramBaseController {
 		})
 	}
 	get routes() {
-		return {'ping': 'pingHandler'}
+		return {'pingCommand': 'pingHandler'}
 	}
 }
 
+var ping = /ping/i;
+
 tg.router
-  .when(['ping'], new PingController())
+  .when(
+  	new RegexpCommand(ping, 'pingCommand'),
+  	new PingController()
+  )
