@@ -1,4 +1,4 @@
-app2.js'use strict'
+'use strict'
 
 var api = require('./api')
 
