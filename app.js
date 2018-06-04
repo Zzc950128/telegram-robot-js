@@ -13,15 +13,26 @@ class PingController extends TelegramBaseController {
 			$.sendMessage(data)
 		})
 	}
+	weatherHandle($) {
+		api.getWeather(function(data) {
+			console.log(data)
+			$.sendMessage(data)
+		})
+	}
 	get routes() {
-		return {'pingCommand': 'pingHandler'}
+		return {
+			'pingCommand': 'pingHandler',
+			'weatherCommand': 'weatherHandle'
+		}
 	}
 }
 
 var ping = /ping/i;
+var weather = /weather/i;
 
 tg.router
   .when(
   	new RegexpCommand(ping, 'pingCommand'),
+  	new RegexpCommand(weather, 'weatherCommand'),
   	new PingController()
   )
