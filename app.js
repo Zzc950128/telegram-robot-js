@@ -23,8 +23,7 @@ class PingController extends TelegramBaseController {
 class WeatherController extends TelegramBaseController {
 	weatherHandle($) {
 		api.getWeather(function(data) {
-		//	$.sendMessage(data)
-			$.sendMessage('Hi')
+			$.sendMessage(data)
 		})
 	}
 	get routes() {
