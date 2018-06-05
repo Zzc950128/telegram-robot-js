@@ -29,12 +29,10 @@ exports.getMZ = function(callback) {
 }
 
 function changeWeather(res) {
-//        var str = JSON.parse(res)
-	var str = res
+	var str = JSON.parse(res)
 	var max = str.HeWeather6[0].daily_forecast[0].tmp_max
 	var min = str.HeWeather6[0].daily_forecast[0].tmp_min
 	var back = "最高气温是: " + max + "度,最低气温是: " + min + "度."
-	console.log(back)
 	return back
 }
 
@@ -42,7 +40,7 @@ exports.getWeather = function(callback) {
 	superagent
 		.get(weather)
 		.end(function(err, res) {
-			var str = changeWeather(res)
+			var str = changeWeather(res.text)
 			callback(str)
 		})
 }
