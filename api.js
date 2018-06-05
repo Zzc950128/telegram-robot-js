@@ -29,7 +29,7 @@ exports.getMZ = function(callback) {
 }
 
 function changeWeather(res) {
-	// var str = JSON.parse(res)
+        var str = JSON.parse(res)
 	var str = res
 	var max = str.HeWeather6[0].daily_forecast[0].tmp_max
 	var min = str.HeWeather6[0].daily_forecast[0].tmp_min
