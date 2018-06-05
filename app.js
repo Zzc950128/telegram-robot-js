@@ -13,6 +13,13 @@ class PingController extends TelegramBaseController {
 			$.sendMessage(data)
 		})
 	}
+	get routes() {
+		return {
+			'pingCommand': 'pingHandler'
+		}
+	}
+}
+class WeatherController extends TelegramBaseController {
 	weatherHandle($) {
 		api.getWeather(function(data) {
 			$.sendMessage(data)
@@ -20,8 +27,19 @@ class PingController extends TelegramBaseController {
 	}
 	get routes() {
 		return {
-			'pingCommand': 'pingHandler',
 			'weatherCommand': 'weatherHandle'
+		}
+	}
+}
+class PhotoController extends TelegramBaseController {
+	photoHandler($) {
+		api.getMZ(function(data) {
+			$.sendMessage(data)
+		})
+	}
+	get routes() {
+		return {
+			'photoCommand': 'photoHandler'
 		}
 	}
 }
@@ -30,8 +48,6 @@ var ping = /ping/i;
 var weather = /weather/i;
 
 tg.router
-  .when(
-  	new RegexpCommand(ping, 'pingCommand'),
-  	new RegexpCommand(weather, 'weatherCommand'),
-  	new PingController()
-  )
+  .when( new RegexpCommand(ping, 'pingCommand'), new PingController() )
+  .when( new RegexpCommand(weather, 'weatherCommand'), new WeatherController() )
+  .when( new TextCommand('/photo', 'photoCommand'), new PhotoController() )
