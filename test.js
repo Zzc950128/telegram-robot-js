@@ -13,6 +13,9 @@ bot.onText(/\/echo (.+)/, (msg, match) => {
 });
 
 bot.on('message', (msg) => {
+	console.log(msg)
 	const chatId = msg.chat.id;
-	bot.sendMessage(chatId, 'Received your message');
+//	bot.sendMessage(chatId, 'Received your message');
 });
+
+
