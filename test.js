@@ -1,5 +1,10 @@
 'use strict'
 
+// const Promise = require('bluebird');
+// Promise.config({
+//   cancellation: true
+// });
+
 const TelegramBot = require('node-telegram-bot-api');
 
 const token = '559899786:AAF0icPrHjiA0WZ3-GR4SmnAD-htwYqkHZo';
@@ -14,5 +19,5 @@ bot.onText(/\/echo (.+)/, (msg, match) => {
 
 bot.on('message', (msg) => {
 	const chatId = msg.chat.id;
-	bot.sendMessage(chatId, 'Received your message');
+	// bot.sendMessage(chatId, 'Received your message');
 });
